@@ -1,21 +1,19 @@
 <script lang="ts" setup>
-import HelloWorld from './components/HelloWorld.vue'</script>
+import Button from './modules/global/atoms/Button/Button.vue';
+import { GetValue, GetJson, Greet } from '../wailsjs/go/main/Test'
+import { useGetSimpleValue } from './utils/composables';
+const value = useGetSimpleValue(GetValue)
+const greeting = useGetSimpleValue(Greet, " test")
+const json = useGetSimpleValue(GetJson)
+</script>
 
 <template>
-  <img id="logo" alt="Wails logo" src="./assets/images/logo-universal.png"/>
-  <HelloWorld/>
+  <h1>hello world</h1>
+  <p>{{ value }}</p>
+  <p>{{ greeting }}</p>
+  <pre>{{ json }}</pre>
+  <Button @click="() => console.log('lol')">Click me</Button>
+  <Button @click="() => console.log('lol2')" class="small">Click me2</Button>
 </template>
 
-<style>
-#logo {
-  display: block;
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  padding: 10% 0 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-origin: content-box;
-}
-</style>
+<style lang="sass" src="./global.scss"></style>
