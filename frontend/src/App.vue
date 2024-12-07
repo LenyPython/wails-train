@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { GetJson, GetValue, Greet } from '@wails/testpkg/Test';
+import { GetJson, GetValue, Greet } from '@go/testpkg/Test';
 import { useGetSimpleValue } from '@src/utils/composables';
 import Button from '@src/modules/global/atoms/Button/button.vue';
 
