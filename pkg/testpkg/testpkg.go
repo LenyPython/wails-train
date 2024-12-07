@@ -1,4 +1,4 @@
-package main
+package testpkg
 
 import "context"
 
@@ -7,15 +7,15 @@ type Test struct {
 	ctx   context.Context
 }
 type TestObj struct {
-	name string `json:name`
-	job  string `json:job`
+	name string `json:"name"`
+	job  string `json:"job"`
 }
 
 func NewTest(value string) *Test {
 	return &Test{value: value}
 }
 
-func (t *Test) startup(ctx context.Context) {
+func (t *Test) Startup(ctx context.Context) {
 	t.ctx = ctx
 }
 

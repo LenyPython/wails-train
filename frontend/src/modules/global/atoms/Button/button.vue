@@ -5,9 +5,10 @@
 </template>
 <script lang="ts" setup>
 
+
 interface Props {
-    onClick: Function
+    onClick: ((payload: MouseEvent) => void) | undefined
 }
 const props = defineProps<Props>()
 </script>
-<style src="./Button.scss"></style>
+<style lang="scss" src="./button.scss"></style>

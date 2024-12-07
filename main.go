@@ -4,6 +4,8 @@ import (
 	"context"
 	"embed"
 
+	"Wails-train/pkg/testpkg"
+
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -14,8 +16,7 @@ var assets embed.FS
 
 func main() {
 	// Create an instance of the app structure
-	app := NewApp()
-	test := NewTest("test_value")
+	test := testpkg.NewTest("test_value")
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -27,12 +28,10 @@ func main() {
 		},
 		BackgroundColour: &options.RGBA{R: 0, G: 0, B: 0, A: 1},
 		OnStartup: func(ctx context.Context) {
-			app.startup(ctx)
-			test.startup(ctx)
+			test.Startup(ctx)
 		},
 
 		Bind: []interface{}{
-			app,
 			test,
 		},
 	})

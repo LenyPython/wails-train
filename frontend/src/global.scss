@@ -1,6 +1,6 @@
-@import './css/variables.scss';
+@use '@src/css/variables' as var;
 
 html {
-	background-color: transparent;
-	color: $white;
+	background-color: var.$black;
+	color: var.$white;
 }
