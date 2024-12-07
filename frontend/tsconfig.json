@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"baseUrl": "/",
+		"baseUrl": ".",
 		"paths": {
-			"@wails/*": ["wailsjs/go/*"],
+			"@go/*": ["wailsjs/go/*"],
 			"@src/*": ["src/*"]
 		},
 		"target": "ESNext",
