@@ -14,6 +14,10 @@ export function Greet(arg1) {
   return window['go']['testpkg']['Test']['Greet'](arg1);
 }
 
+export function SetValue(arg1) {
+  return window['go']['testpkg']['Test']['SetValue'](arg1);
+}
+
 export function Startup(arg1) {
   return window['go']['testpkg']['Test']['Startup'](arg1);
 }

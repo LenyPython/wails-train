@@ -1,20 +1,32 @@
 <template>
   <h1>hello world</h1>
-  <p>{{ value }}</p>
-  <p>{{ greeting }}</p>
-  <pre>{{ json }}</pre>
-  <Button @click="() => console.log(value)">Value</Button>
-  <Button @click="() => console.log(greeting)" class="small">Greet</Button>
+  <p>
+    {{ value }}
+  </p>
+  <Button @click="handleClick">Change</Button>
 </template>
 
 <script lang="ts" setup>
-import { GetJson, GetValue, Greet } from '@go/testpkg/Test';
-import { useGetSimpleValue } from '@src/utils/composables';
-import Button from '@src/modules/global/atoms/Button/button.vue';
+import Button from '@js/modules/global/atoms/Button/button.vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
-const value = useGetSimpleValue(GetValue)
-const greeting = useGetSimpleValue(Greet, " test")
-const json = useGetSimpleValue(GetJson)
+
+const value = ref<string>('')
+onMounted(() => {
+  (window as any).runtime?.EventsOn('state_updated', (data: string) => {
+    console.log(data)
+    value.value = data
+  })
+})
+
+onUnmounted(() => {
+  (window as any).runtime?.EventsOff('state_updated')
+})
+
+const handleClick = () => {
+  (window as any).runtime?.EventsEmit('change_state', 'changed')
+  console.log('clicked')
+}
 </script>
 
 

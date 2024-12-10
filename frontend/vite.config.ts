@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@src': path.resolve(__dirname, '/src'),
+			'@js': path.resolve(__dirname, '/src'),
 			'@go': path.resolve(__dirname, '/wailsjs/go')
 		}
 	},

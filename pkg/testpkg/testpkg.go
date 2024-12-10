@@ -1,6 +1,10 @@
 package testpkg
 
-import "context"
+import (
+	"context"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
+)
 
 type Test struct {
 	value string
@@ -17,6 +21,20 @@ func NewTest(value string) *Test {
 
 func (t *Test) Startup(ctx context.Context) {
 	t.ctx = ctx
+	runtime.EventsOn(t.ctx, "change_state", func(optionalData ...interface{}) {
+		switch optionalData[0].(type) {
+		default:
+			runtime.LogError(t.ctx, "Incorrect data type")
+		case string:
+			t.SetValue(optionalData[0].(string))
+		}
+	})
+	runtime.EventsEmit(t.ctx, "state_updated", t.value)
+}
+
+func (t *Test) SetValue(str string) {
+	t.value = str
+	runtime.EventsEmit(t.ctx, "state_updated", t.value)
 }
 
 func (t *Test) GetValue() string {

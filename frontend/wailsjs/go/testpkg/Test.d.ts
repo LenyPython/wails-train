@@ -9,4 +9,6 @@ export function GetValue():Promise<string>;
 
 export function Greet(arg1:string):Promise<string>;
 
+export function SetValue(arg1:string):Promise<void>;
+
 export function Startup(arg1:context.Context):Promise<void>;

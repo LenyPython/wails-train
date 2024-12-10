@@ -3,7 +3,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@go/*": ["wailsjs/go/*"],
-			"@src/*": ["src/*"]
+			"@js/*": ["src/*"]
 		},
 		"target": "ESNext",
 		"useDefineForClassFields": true,
